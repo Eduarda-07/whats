@@ -178,6 +178,8 @@ const getUsuarioContato = function(numeroTelefone, nomeContato){
 
 }
 
+//console.log(getUsuarioContato('11987876567','Jane Smith'))
+
 const getPalavrasChave = function(numeroTelefone, nomeContato, palavraChave){
     let telefone = Number(numeroTelefone)
     let contato = String(nomeContato).toUpperCase()
@@ -191,7 +193,7 @@ const getPalavrasChave = function(numeroTelefone, nomeContato, palavraChave){
             item.contacts.forEach(function(item2){
                 if(String(contato).toUpperCase == (item2.name).toUpperCase()){
                     item2.messages.forEach(function(item3){
-                        if(String(palavra).toUpperCase == (item3).toUpperCase().includes(palavra)){
+                        if(String(palavra) == (item3.content.toUpperCase().includes(palavra))){
                             status = true
                             listaMensagens.push({
                                 sender: item3.sender,
@@ -214,4 +216,15 @@ const getPalavrasChave = function(numeroTelefone, nomeContato, palavraChave){
         return status
     }
 }
-// console.log(getUsuarioContato('11987876567','Jane Smith'))
+//console.log(getPalavrasChave('11987876567','Jane Smith','Yes'))
+
+
+
+module.exports={
+    getDadosPessoais,
+    getDadosPerfil,
+    getDadosContatos,
+    getMensagem,
+    getUsuarioContato,
+    getPalavrasChave
+}
